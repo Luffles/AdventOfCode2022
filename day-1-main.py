@@ -11,13 +11,19 @@ data = moose_puzzle_input.read()
 
 data_into_list = data.split('\n')
 
-highest_calories = 0
+highest_calories = [0, 0, 0]
 x = 0
 for i in data_into_list:
-    if i == "":
+    if i != "":
+        x += int(i)
+
+    else:
+        if x > highest_calories[0]:
+            highest_calories[0] = x
+        elif x > highest_calories[1]:
+            highest_calories[1] = x
+        elif x > highest_calories[2]:
+            highest_calories[2] = x
         x = 0
-        continue
-    x += int(i)
-    if highest_calories < x:
-        highest_calories = x
-print(highest_calories)
+print(highest_calories[0], '\n', highest_calories[1], '\n', highest_calories[2])
+print(sum(highest_calories))
