@@ -7,23 +7,15 @@
 moose_puzzle_input = open("day-1-puzzle-input-moose.txt", "r")
 
 #read file
-data = moose_puzzle_input.read()
 
-data_into_list = data.split('\n')
-
-highest_calories = [0, 0, 0]
-x = 0
-for i in data_into_list:
-    if i != "":
-        x += int(i)
-
+calories = 0
+calories_list = []
+for line in moose_puzzle_input.readlines():
+    if line == "\n":
+        calories_list.append(calories)
+        calories = 0
     else:
-        if x > highest_calories[0]:
-            highest_calories[0] = x
-        elif x > highest_calories[1]:
-            highest_calories[1] = x
-        elif x > highest_calories[2]:
-            highest_calories[2] = x
-        x = 0
-print(highest_calories[0], '\n', highest_calories[1], '\n', highest_calories[2])
-print(sum(highest_calories))
+        calories += int(line)
+sum_top_calories = sum(sorted(calories_list)[-3:])
+print(sum_top_calories)
+
