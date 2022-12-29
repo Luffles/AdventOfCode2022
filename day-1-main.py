@@ -3,15 +3,21 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
-#this is a test
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+#open file
+moose_puzzle_input = open("day-1-puzzle-input-moose.txt", "r")
 
+#read file
+data = moose_puzzle_input.read()
 
+data_into_list = data.split('\n')
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+highest_calories = 0
+x = 0
+for i in data_into_list:
+    if i == "":
+        x = 0
+        continue
+    x += int(i)
+    if highest_calories < x:
+        highest_calories = x
+print(highest_calories)
